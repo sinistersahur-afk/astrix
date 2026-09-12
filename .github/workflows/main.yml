@@ -86,11 +86,13 @@ jobs:
         run: |
           set -x
           cd Application/Dopamine/Resources
-          ./download_bootstraps.sh
+          chmod +x download_bootstraps.sh
+          bash download_bootstraps.sh
 
       - name: Build
         run: |
           set -x
+          chmod +x BaseBin/tar
           export BASEDIR="$(pwd)"
           export THEOS="${BASEDIR}/theos"
           gmake -j$(sysctl -n hw.logicalcpu) NIGHTLY=1
